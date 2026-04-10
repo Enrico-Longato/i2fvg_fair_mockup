@@ -27,6 +27,7 @@ Thumbs.db
 
 .ipynb_checkpoints/
 
-data/*
-!data/.gitkeep
+data/**
+!data/**/
+!data/**/.gitkeep
 !data/README.md

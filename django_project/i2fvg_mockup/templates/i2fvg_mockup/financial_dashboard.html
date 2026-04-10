@@ -1,0 +1,76 @@
+{% extends "i2fvg_mockup/base.html" %}
+
+{% block title %}Financial{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Financial</h1>
+    <p class="muted">Bilanci per anno, totale ricavi delle vendite e confronto fra aziende per anno selezionato.</p>
+</div>
+
+<div class="grid grid-2" style="margin-top: 18px;">
+    <div class="card">
+        <h2>N. aziende che hanno bilancio per anno</h2>
+        <div class="bar-chart">
+            {% for item in company_count_rows %}
+                <div class="bar-row">
+                    <div class="bar-label">
+                        <strong>{{ item.anno }}</strong>
+                        <span class="muted">{{ item.company_count }}</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: {{ item.bar_width }}%;"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Totale ricavi delle vendite per anno</h2>
+        <div class="bar-chart">
+            {% for item in revenue_year_rows %}
+                <div class="bar-row">
+                    <div class="bar-label">
+                        <strong>{{ item.year }}</strong>
+                        <span class="muted">{{ item.revenue|floatformat:0 }}</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill alt" style="width: {{ item.bar_width }}%;"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 18px;">
+    <h2>Ricavi delle vendite per azienda</h2>
+    <form class="inline-form" method="get">
+        <div>
+            <label for="year">Anno</label><br>
+            <select id="year" name="year">
+                {% for year in available_years %}
+                    <option value="{{ year }}" {% if selected_year == year %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Applica</button>
+    </form>
+    <div class="bar-chart">
+        {% for item in company_revenue_rows %}
+            <div class="bar-row">
+                <div class="bar-label">
+                    <strong>{{ item.company_name }}</strong>
+                    <span class="muted">{{ item.revenue|floatformat:0 }}</span>
+                </div>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width: {{ item.bar_width }}%;"></div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="muted">Nessun dato disponibile per l'anno selezionato.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

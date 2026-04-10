@@ -1,0 +1,43 @@
+{% extends "i2fvg_mockup/base.html" %}
+
+{% block title %}Progetto {{ project.projectID }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ project.acronym }} <span class="pill">{{ project.projectID }}</span></h1>
+    <p>{{ project.title }}</p>
+    <p class="muted">{{ project.status }} | {{ project.startDate }} - {{ project.endDate }}</p>
+</div>
+
+<div class="grid grid-2" style="margin-top: 18px;">
+    <div class="card">
+        <h2>Organizzazioni</h2>
+        <div class="list">
+            {% for item in project.organization_set.all %}
+                <div class="row">
+                    <strong>{{ item.name }}</strong><br>
+                    <span class="muted">{{ item.role }} | {{ item.country }} | CF: {{ item.cf|default:"-" }}</span>
+                    {% if item.cf %}
+                    <br><a href="{% url 'i2fvg_mockup:company_detail' item.cf.cf %}">Apri azienda</a>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <div class="row muted">Nessuna organizzazione collegata.</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card">
+        <h2>EuroSciVoc</h2>
+        <div class="list">
+            {% for item in project.euroscivoc_set.all %}
+                <div class="row">
+                    <strong>{{ item.euroSciVocTitle }}</strong><br>
+                    <span class="muted">{{ item.livello_1 }} | {{ item.livello_2 }}</span>
+                </div>
+            {% empty %}
+                <div class="row muted">Nessun tema associato.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

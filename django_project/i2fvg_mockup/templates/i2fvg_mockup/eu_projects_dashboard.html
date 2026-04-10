@@ -1,0 +1,99 @@
+{% extends "i2fvg_mockup/base.html" %}
+
+{% block title %}EU projects{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>EU projects</h1>
+    <p class="muted">Confronto tra H2020 e Horizon Europe su imprese coinvolte, contributi per azienda e distribuzione per titolo EuroSciVoc.</p>
+</div>
+
+<div class="card" style="margin-top: 18px;">
+    <h2>IMPRESE BENEFICIARIE DI FINANZIAMENTI U.E. PER ANNO</h2>
+    <div class="eu-legend">
+        <div class="eu-legend-item"><span class="eu-dot h2020"></span>H2020</div>
+        <div class="eu-legend-item"><span class="eu-dot he"></span>HORIZON EUROPE</div>
+    </div>
+    <div class="vertical-chart">
+        {% for item in company_year_rows %}
+            <div class="vertical-col">
+                <div class="vertical-bars">
+                    {% if item.h2020_count %}
+                        <div class="vertical-bar h2020" style="height: {{ item.h2020_width }}%;" title="H2020: {{ item.h2020_count }}">
+                            {{ item.h2020_count }}
+                        </div>
+                    {% endif %}
+                    {% if item.he_count %}
+                        <div class="vertical-bar he" style="height: {{ item.he_width }}%;" title="Horizon Europe: {{ item.he_count }}">
+                            {{ item.he_count }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="vertical-year">{{ item.year }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 18px;">
+    <h2>CONTRIBUTO U.E. PER IMPRESA</h2>
+    <div class="eu-legend">
+        <div class="eu-legend-item"><span class="eu-dot h2020"></span>H2020</div>
+        <div class="eu-legend-item"><span class="eu-dot he"></span>HORIZON EUROPE</div>
+    </div>
+    <div class="compare-list">
+        {% for item in contribution_rows %}
+            <div class="compare-row">
+                <div class="compare-name">{{ item.company_name }}</div>
+                <div class="compare-bars">
+                    <div class="compare-bar-wrap">
+                        <div class="compare-bar-track">
+                            <div class="compare-bar-fill h2020" style="width: {{ item.h2020_width }}%;"></div>
+                        </div>
+                        <div class="compare-value">€ {{ item.h2020_amount|floatformat:0 }}</div>
+                    </div>
+                    <div class="compare-bar-wrap">
+                        <div class="compare-bar-track">
+                            <div class="compare-bar-fill he" style="width: {{ item.he_width }}%;"></div>
+                        </div>
+                        <div class="compare-value">€ {{ item.he_amount|floatformat:0 }}</div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="muted">Nessun contributo disponibile.</div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 18px;">
+    <h2>DISTRIBUZIONE DI PROGETTI PER TITOLO EUROSCIVOC</h2>
+    <div class="eu-legend">
+        <div class="eu-legend-item"><span class="eu-dot h2020"></span>H2020</div>
+        <div class="eu-legend-item"><span class="eu-dot he"></span>HORIZON EUROPE</div>
+    </div>
+    <div class="compare-list">
+        {% for item in euroscivoc_rows %}
+            <div class="compare-row">
+                <div class="compare-name">{{ item.title }}</div>
+                <div class="compare-bars">
+                    <div class="compare-bar-wrap">
+                        <div class="compare-bar-track">
+                            <div class="compare-bar-fill h2020" style="width: {{ item.h2020_width }}%;"></div>
+                        </div>
+                        <div class="compare-value">{{ item.h2020_count }}</div>
+                    </div>
+                    <div class="compare-bar-wrap">
+                        <div class="compare-bar-track">
+                            <div class="compare-bar-fill he" style="width: {{ item.he_width }}%;"></div>
+                        </div>
+                        <div class="compare-value">{{ item.he_count }}</div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="muted">Nessun dato EuroSciVoc disponibile.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "i2fvg_mockup/base.html" %}
+
+{% block title %}Azienda {{ company.cf }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ company.cf }}</h1>
+    <p class="muted">Headquarters principale del company registry</p>
+</div>
+
+<div class="grid grid-2" style="margin-top: 18px;">
+    <div class="card">
+        <h2>Company registry</h2>
+        <div class="list">
+            {% for item in registry_rows|slice:":10" %}
+                <div class="row">
+                    <strong>{{ item.denominazione|default:company.cf }}</strong><br>
+                    <span class="muted">{{ item.comune }} | {{ item.stato_impresa }} | {{ item.rea }}</span>
+                </div>
+            {% empty %}
+                <div class="row muted">Nessun record di company registry.</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card">
+        <h2>Financial</h2>
+        <div class="list">
+            {% for item in financial_rows|slice:":10" %}
+                <div class="row">
+                    <strong>Anno {{ item.anno }}</strong><br>
+                    <span class="muted">Attivo: {{ item.totale_attivo }} | Patrimonio netto: {{ item.totale_patrimonio_netto }}</span>
+                </div>
+            {% empty %}
+                <div class="row muted">Nessun record financial.</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+        <h2>Progetti UE collegati</h2>
+        <div class="list">
+            {% for item in linked_projects %}
+                <div class="row">
+                    <a href="{% url 'i2fvg_mockup:project_detail' item.project.projectID %}">{{ item.project.projectID }}</a>
+                    <strong>{{ item.project.acronym }}</strong><br>
+                    <span class="muted">{{ item.name }} | {{ item.role }} | {{ item.country }}</span>
+                </div>
+            {% empty %}
+                <div class="row muted">Nessun progetto UE collegato.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

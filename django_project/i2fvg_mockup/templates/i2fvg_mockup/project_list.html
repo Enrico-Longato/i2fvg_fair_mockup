@@ -1,0 +1,39 @@
+{% extends "i2fvg_mockup/base.html" %}
+
+{% block title %}Progetti{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Progetti UE</h1>
+    <form class="search" method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Cerca per ID, acronimo o titolo">
+        <button type="submit">Cerca</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Acronimo</th>
+                <th>Status</th>
+                <th>Organizzazioni</th>
+                <th>Aziende collegate</th>
+                <th>Temi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td><a href="{% url 'i2fvg_mockup:project_detail' project.projectID %}">{{ project.projectID }}</a></td>
+                <td>{{ project.acronym }}</td>
+                <td>{{ project.status }}</td>
+                <td>{{ project.organization_count }}</td>
+                <td>{{ project.company_count }}</td>
+                <td>{{ project.topic_count }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="muted">Nessun risultato.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

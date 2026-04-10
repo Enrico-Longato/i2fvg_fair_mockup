@@ -1,0 +1,45 @@
+{% extends "i2fvg_mockup/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+        <img
+            src="{% static 'logo/logo-iifvg.jpg' %}"
+            alt="Innovation Intelligence FVG"
+            style="max-width: 320px; width: 100%; height: auto; display: block;"
+        >
+        <div style="flex: 1; min-width: 280px;">
+            <div class="pill" style="margin-bottom: 10px;">Innovation Intelligence FVG</div>
+            <h1 style="margin: 0 0 14px;">FAIR mockup</h1>
+            <p class="muted" style="margin: 0 0 12px;">
+                This mockup showcases the new FAIR-aligned version of Innovation Intelligence FVG.
+                Designed to improve data accessibility, interoperability, and reuse across the regional innovation ecosystem.
+            </p>
+            <p class="muted" style="margin: 0;">
+                Please note that the following pages are in Italian, allowing for a more accurate and complete representation of company data.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-3" style="margin-top: 18px;">
+    <div class="card">
+        <h2>Companies information</h2>
+        <p class="muted">Indicatori sulle imprese attive, localizzazioni, natura giuridica e distribuzione per provincia.</p>
+        <p><a href="{% url 'i2fvg_mockup:company_list' %}">Apri la pagina</a></p>
+    </div>
+    <div class="card">
+        <h2>Financial</h2>
+        <p class="muted">Andamento dei bilanci per anno, ricavi delle vendite e confronto tra aziende per anno selezionato.</p>
+        <p><a href="{% url 'i2fvg_mockup:financial_dashboard' %}">Apri la pagina</a></p>
+    </div>
+    <div class="card">
+        <h2>EU projects</h2>
+        <p class="muted">Imprese coinvolte in H2020 e Horizon Europe, contributi per azienda e distribuzione EuroSciVoc.</p>
+        <p><a href="{% url 'i2fvg_mockup:eu_projects_dashboard' %}">Apri la pagina</a></p>
+    </div>
+</div>
+{% endblock %}

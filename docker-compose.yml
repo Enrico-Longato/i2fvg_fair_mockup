@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    container_name: i2fvg_web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django_project:/app
+      - ./data:/app/data
+    command: python manage.py runserver 0.0.0.0:8000
+
+  pipeline:
+    build: .
+    container_name: i2fvg_pipeline
+    volumes:
+      - .:/app
+      - ./data:/app/data

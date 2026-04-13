@@ -110,6 +110,14 @@ The app [`i2fvg_mockup`](/root/i2fvg/django_project/i2fvg_mockup) imports proces
 
 ## Expected source files
 
+## Demo note
+
+To make the project runnable out of the box, the repository currently includes a small set of placeholder input files in `data/company_registry/` and `data/financial/`.
+
+These files are intentionally fictitious in almost all fields. Only the VAT numbers (`partite IVA`) are real, so the project can still be used to match companies and download related EU project data.
+
+Do not treat the company registry or financial values contained in these bundled sample files as real business information.
+
 ### Company registry
 
 [`script/01_02_company_registry.py`](/root/i2fvg/script/01_02_company_registry.py) auto-detects the latest available file matching:

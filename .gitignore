@@ -30,4 +30,6 @@ Thumbs.db
 data/**
 !data/**/
 !data/**/.gitkeep
+!data/company_registry/imprese_fvg_12_2025.xlsx
+!data/financial/infocamere_2025.csv
 !data/README.md

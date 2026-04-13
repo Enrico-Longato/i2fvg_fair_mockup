@@ -1,4 +1,4 @@
-# i2fvg
+# Innovation Intelligence FVG - FAIR Mockup
 
 Data processing and visualization project for regional companies, financial data, and EU-funded projects. The project was implemented as project-thesis for the Master in Data Management and Curation, 2025-2026 edition, of the SISSA and Area Science Park.
 

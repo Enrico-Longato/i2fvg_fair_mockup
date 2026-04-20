@@ -106,7 +106,7 @@ The app [`i2fvg_mockup`](/root/i2fvg/django_project/i2fvg_mockup) imports proces
 - `03_01_financial_input_to_dcat.py` - Produce DCAT metadata for raw company financial files.
 - `03_02_financial.py` - Validate and process financial data and export processed CSV outputs.
 - `03_03_financial_output_to_dcat.py` - Produce DCAT metadata for processed financial CSV outputs.
-- `04_01_django_import_sqlite.py` - Run Django `manage.py import_i2fvg_data` to import processed CSV data into SQLite.
+- `04_01_django_import_sqlite.py` - Run Django `manage.py migrate` and `manage.py import_i2fvg_data` to initialize and populate SQLite.
 
 ## Expected source files
 
@@ -259,6 +259,9 @@ python manage.py migrate
 python manage.py import_i2fvg_data
 python manage.py runserver
 ```
+
+When using Docker Compose, the `web` service runs `python manage.py migrate --noinput`
+before starting the Django development server.
 
 Application URL:
 

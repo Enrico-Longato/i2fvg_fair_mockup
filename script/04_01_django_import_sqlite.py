@@ -1,8 +1,8 @@
 """
 Load the processed CSV data into the Django SQLite database.
 
-This wrapper runs the Django management command `import_i2fvg_data`
-from the project located in `../django_project`.
+This wrapper runs Django migrations and then executes the management
+command `import_i2fvg_data` from the project located in `../django_project`.
 """
 
 import subprocess
@@ -19,8 +19,14 @@ def main():
         raise FileNotFoundError(f"manage.py not found: {manage_py}")
 
     print(f"Using Django project: {django_dir}")
-    print("Running: manage.py import_i2fvg_data")
+    print("Running: manage.py migrate")
+    subprocess.run(
+        [sys.executable, str(manage_py), "migrate", "--noinput"],
+        cwd=django_dir,
+        check=True,
+    )
 
+    print("Running: manage.py import_i2fvg_data")
     subprocess.run(
         [sys.executable, str(manage_py), "import_i2fvg_data"],
         cwd=django_dir,

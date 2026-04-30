@@ -7,6 +7,7 @@ This repository combines:
 - Python scripts for data cleaning and preparation
 - DCAT metadata generation for input and output datasets
 - a Django web application for browsing the processed data
+- a Data Management Plan describing data governance, privacy, and licensing
 
 Some variable names and source-specific labels remain in Italian because of the nature of the original datasets.
 

@@ -53,6 +53,7 @@ i2fvg/
 |   |-- 03_03_financial_output_to_dcat.py
 |   `-- 04_01_django_import_sqlite.py
 |-- Dockerfile
+|-- DATA_MANAGEMENT_PLAN.md
 |-- docker-compose.yml
 `-- requirements.txt
 ```
@@ -93,6 +94,10 @@ Generated datasets are ignored by Git, except for placeholder `.gitkeep` files.
 The folder [`django_project/`](/root/i2fvg/django_project) contains the local web application.
 
 The app [`i2fvg_mockup`](/root/i2fvg/django_project/i2fvg_mockup) imports processed CSV outputs into SQLite and exposes dashboards and detail pages for companies, financial data, and EU projects.
+
+### 4. Project documentation
+
+The repository also includes a [Data Management Plan](/root/i2fvg/DATA_MANAGEMENT_PLAN.md) describing the dataset types, FAIR alignment, security considerations, responsibilities, and reuse expectations for the mockup.
 
 ## Files (Python scripts only)
 

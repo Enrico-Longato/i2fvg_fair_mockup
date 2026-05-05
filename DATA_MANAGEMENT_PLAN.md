@@ -39,6 +39,16 @@ Processed datasets and metadata are designed to be reusable for:
 - Datasets are organized by domain (`company_registry`, `financial`, `eu_projects`)
 - Metadata are generated in DCAT JSON format
 - File naming conventions and folder structure ensure discoverability
+- Naming conventions follow a consistent pattern:
+  - dataset files use lowercase and underscores, avoiding spaces
+  - file names start with the project prefix (`i2fvg_`), followed by the domain and descriptive suffixes such as `company_registry`, `financial`, `ateco`, `filtered`, or `headquarters`
+  - data files use `.csv`, while metadata files use `.dcat.json`
+  - versioning and subset information are encoded in the filename when needed, e.g. `i2fvg_company_registry_filtered.csv` or `i2fvg_ateco_sedi.csv`
+- Script naming conventions ensure sequential execution and clarity:
+  - scripts are numbered with a two-digit prefix (e.g., `00_`, `01_`, `02_`) to indicate the order of execution in the workflow
+  - sub-steps within a main step use additional numbering (e.g., `01_01_`, `01_02_`)
+  - descriptive names follow the numbering, using underscores instead of spaces, and end with `.py` for Python scripts
+  - examples include `00_main.py` for the main entry point, `01_01_input_to_dcat.py` for input processing, and `04_01_django_import_sqlite.py` for database integration
 
 ### 2.2 Making data accessible
 - Data are accessible locally via repository structure and Django interface

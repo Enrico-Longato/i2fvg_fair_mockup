@@ -87,7 +87,11 @@ Tracked folders:
 - [`data/eu_projects/horizon_europe/`](/root/i2fvg/data/eu_projects/horizon_europe)
 - [`data/eu_projects/merge/`](/root/i2fvg/data/eu_projects/merge)
 
-Generated datasets are ignored by Git, except for placeholder `.gitkeep` files.
+Most generated datasets are ignored by Git. The repository intentionally tracks:
+
+- placeholder `.gitkeep` files
+- a small set of sample input files
+- selected metadata and crosswalk JSON files used to document dataset semantics
 
 ### 3. Django web application
 
@@ -114,13 +118,11 @@ The repository also includes a [Data Management Plan](/root/i2fvg/DATA_MANAGEMEN
 - `03_03_financial_output_to_dcat.py` - Produce DCAT metadata for processed financial CSV outputs.
 - `04_01_django_import_sqlite.py` - Run Django `manage.py migrate` and `manage.py import_i2fvg_data` to initialize and populate SQLite.
 
-## Expected source files
-
 ## Demo note
 
-To make the project runnable out of the box, the repository currently includes a small set of placeholder input files in `data/company_registry/` and `data/financial/`.
+To make the project runnable out of the box, the repository currently includes a small set of sample input files in `data/company_registry/` and `data/financial/`, together with selected metadata and crosswalk files.
 
-These files are intentionally fictitious in almost all fields. Only the VAT numbers (`partite IVA`) are real, so the project can still be used to match companies and download related EU project data.
+These bundled sample files are intentionally fictitious in almost all fields. Only the VAT numbers (`partite IVA`) are real, so the project can still be used to match companies and download related EU project data.
 
 Do not treat the company registry or financial values contained in these bundled sample files as real business information.
 
@@ -174,7 +176,7 @@ The Django import command expects these processed CSV files:
 - `data/eu_projects/merge/organization.csv`
 - `data/eu_projects/merge/euroscivoc.csv`
 
-Additional `.json` files may be generated next to datasets as DCAT metadata outputs.
+Additional `.json` files may be generated next to datasets as DCAT metadata outputs. Some crosswalk and metadata JSON files are also versioned in the repository.
 
 ## `cols_dict.xlsx`
 
@@ -320,7 +322,7 @@ These metadata files describe:
 
 ## Notes
 
-- Real datasets are not versioned in this repository.
+- Full production datasets are not versioned in this repository. The tracked `data/` files are limited to sample inputs, selected metadata, and crosswalk files.
 - The pipeline depends on consistent file naming inside `data/`.
 - The CORDIS download step requires network access.
 - Processed CSV files are imported with `|` as delimiter.
@@ -329,7 +331,6 @@ These metadata files describe:
 
 ## Related documentation
 
-- [`script/README.md`](/root/i2fvg/script/README.md) - script-specific notes
 - [`requirements.txt`](/root/i2fvg/requirements.txt) - Python dependencies
 - [`django_project/i2fvg_mockup/views.py`](/root/i2fvg/django_project/i2fvg_mockup/views.py) - dashboard logic
 

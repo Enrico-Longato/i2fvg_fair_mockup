@@ -1,0 +1,182 @@
+{
+  "@context": {
+    "schema":   "https://schema.org/",
+    "rov":      "http://www.w3.org/ns/regorg#",
+    "adms":     "http://www.w3.org/ns/adms#",
+    "cov":      "https://w3id.org/italia/onto/COV/",
+    "ifrs":     "http://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full#"
+  },
+
+  "@type": "rov:RegisteredOrganization",
+
+  "_crosswalk": {
+
+    "c fiscale": {
+      "uri": "schema:taxID",
+      "type": "string",
+      "note": "Company tax code"
+    },
+
+    "rea": {
+      "uri": "cov:REANumber",
+      "type": "string",
+      "note": "REA number — stable canonical URI from w3id.org"
+    },
+
+    "cia": {
+      "uri": "adms:identifier",
+      "type": "string",
+      "note": "Chamber of Commerce identifier — used for alternative identifiers (non-REA)"
+    },
+
+    "anno": {
+      "uri": "schema:temporalCoverage",
+      "type": "string",
+      "parent": "bilancio",
+      "note": "Financial year expressed as string (e.g. '2022'); avoids misuse of dcterms:temporal"
+    },
+
+    "bilancio": {
+      "uri": "schema:hasPart",
+      "range": "schema:FinancialStatement",
+      "note": "Financial statement container — schema:FinancialStatement used as value type"
+    },
+
+    "Totale attivo": {
+      "uri": "ifrs:Assets",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "IFRS concept for total assets"
+    },
+
+    "Totale Immobilizzazioni immateriali": {
+      "uri": "ifrs:IntangibleAssetsOtherThanGoodwill",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "IFRS concept for intangible assets excluding goodwill"
+    },
+
+    "Crediti esigibili entro l'esercizio successivo": {
+      "uri": "ifrs:TradeAndOtherCurrentReceivables",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "IFRS concept for short-term receivables"
+    },
+
+    "Totale patrimonio netto": {
+      "uri": "ifrs:Equity",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "IFRS concept for shareholders' equity"
+    },
+
+    "Debiti esigibili entro l'esercizio successivo": {
+      "uri": "ifrs:TradeAndOtherCurrentPayables",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "IFRS concept for current liabilities"
+    },
+
+    "Totale valore della produzione": {
+      "uri": "ifrs:Revenue",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Closest IFRS approximation of Italian GAAP value of production"
+    },
+
+    "Ricavi delle vendite": {
+      "uri": "schema:revenue",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Sales revenue"
+    },
+
+    "Totale Costi del Personale": {
+      "uri": "ifrs:EmployeeBenefitsExpense",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Employee costs including salaries and contributions"
+    },
+
+    "Differenza tra valore e costi della produzione": {
+      "uri": "ifrs:ProfitLossFromOperatingActivities",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Operating result (EBIT-like)"
+    },
+
+    "Ammortamento Immobilizzazione Immateriali": {
+      "uri": "ifrs:AmortisationIntangibleAssetsOtherThanGoodwill",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Amortisation of intangible assets"
+    },
+
+    "Utile/perdita esercizio ultimi": {
+      "uri": "ifrs:ProfitLoss",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Net profit or loss"
+    },
+
+    "valore aggiunto": {
+      "uri": "ifrs:GrossProfit",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Approximation of value added"
+    },
+
+    "tot.aam.acc.svalutazioni": {
+      "uri": "ifrs:DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Total depreciation, amortisation and impairment"
+    },
+
+    "(ron) reddito operativo netto": {
+      "uri": "schema:operatingIncome",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Operating income"
+    },
+
+    "Immobilizzazioni materiali": {
+      "uri": "ifrs:PropertyPlantAndEquipment",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Tangible fixed assets"
+    },
+
+    "Immobilizzazioni finanziarie": {
+      "uri": "ifrs:NoncurrentFinancialAssets",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Long-term financial assets"
+    },
+
+    "Attivo Circolante": {
+      "uri": "ifrs:CurrentAssets",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "parent": "bilancio",
+      "note": "Current assets"
+    }
+
+  }
+}

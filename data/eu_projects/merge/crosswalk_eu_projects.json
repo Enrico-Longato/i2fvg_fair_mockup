@@ -1,0 +1,317 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "org": "http://www.w3.org/ns/org#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "adms": "http://www.w3.org/ns/adms#"
+  },
+
+  "_crosswalk": {
+
+    "project": {
+
+      "projectID": {
+        "uri": "schema:identifier",
+        "type": "string"
+      },
+
+      "acronym": {
+        "uri": "schema:alternateName",
+        "type": "string"
+      },
+
+      "status": {
+        "uri": "adms:status",
+        "range": "skos:Concept",
+        "type": "string"
+      },
+
+      "title": {
+        "uri": "schema:name",
+        "type": "string"
+      },
+
+      "startDate": {
+        "uri": "schema:startDate",
+        "type": "date"
+      },
+
+      "endDate": {
+        "uri": "schema:endDate",
+        "type": "date"
+      },
+
+      "totalCost": {
+        "uri": "schema:amount",
+        "range": "schema:MonetaryAmount",
+        "type": "number"
+      },
+
+      "ecMaxContribution": {
+        "uri": "schema:amount",
+        "range": "schema:MonetaryAmount",
+        "qualifier": "schema:propertyID = 'ecMaxContribution'",
+        "type": "number"
+      },
+
+      "legalBasis": {
+        "uri": "dcterms:isPartOf",
+        "type": "string"
+      },
+
+      "topics": {
+        "uri": "schema:about",
+        "range": "skos:Concept",
+        "type": "string"
+      },
+
+      "ecSignatureDate": {
+        "uri": "schema:dateCreated",
+        "type": "date"
+      },
+
+      "frameworkProgramme": {
+        "uri": "dcterms:isPartOf",
+        "type": "string"
+      },
+
+      "masterCall": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'masterCall'"
+      },
+
+      "subCall": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'subCall'"
+      },
+
+      "fundingScheme": {
+        "uri": "schema:additionalType",
+        "type": "string"
+      },
+
+      "objective": {
+        "uri": "schema:abstract",
+        "type": "string"
+      },
+
+      "contentUpdateDate": {
+        "uri": "dcterms:modified",
+        "type": "date"
+      },
+
+      "rcn": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'rcn'"
+      },
+
+      "grantDoi": {
+        "uri": "schema:sameAs",
+        "type": "string"
+      },
+
+      "keywords": {
+        "uri": "schema:keywords",
+        "range": "skos:Concept",
+        "type": "string"
+      },
+
+      "coordinator": {
+        "uri": "schema:leader",
+        "type": "string"
+      },
+
+      "participants": {
+        "uri": "schema:participant",
+        "type": "string"
+      }
+    },
+
+    "organization": {
+
+      "projectID": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'projectID'"
+      },
+
+      "projectAcronym": {
+        "uri": "schema:alternateName",
+        "type": "string"
+      },
+
+      "organisationID": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'organisationID'"
+      },
+
+      "vatNumber": {
+        "uri": "schema:vatID",
+        "type": "string"
+      },
+
+      "cf": {
+        "uri": "schema:taxID",
+        "type": "string"
+      },
+
+      "name": {
+        "uri": "schema:legalName",
+        "type": "string"
+      },
+
+      "shortName": {
+        "uri": "schema:alternateName",
+        "type": "string"
+      },
+
+      "SME": {
+        "uri": "schema:additionalType",
+        "range": "skos:Concept",
+        "type": "boolean"
+      },
+
+      "activityType": {
+        "uri": "org:classification",
+        "range": "skos:Concept"
+      },
+
+      "street": {
+        "uri": "schema:streetAddress",
+        "parent": "schema:PostalAddress"
+      },
+
+      "postCode": {
+        "uri": "schema:postalCode",
+        "parent": "schema:PostalAddress"
+      },
+
+      "city": {
+        "uri": "schema:addressLocality",
+        "parent": "schema:PostalAddress"
+      },
+
+      "country": {
+        "uri": "schema:addressCountry",
+        "parent": "schema:PostalAddress"
+      },
+
+      "nutsCode": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'nutsCode'"
+      },
+
+      "geolocation": {
+        "uri": "schema:geo",
+        "range": "schema:GeoCoordinates"
+      },
+
+      "organizationURL": {
+        "uri": "schema:url"
+      },
+
+      "contactForm": {
+        "uri": "schema:contactPoint",
+        "range": "schema:ContactPoint"
+      },
+
+      "contentUpdateDate": {
+        "uri": "dcterms:modified",
+        "type": "date"
+      },
+
+      "rcn": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'rcn'"
+      },
+
+      "order": {
+        "uri": "schema:position",
+        "type": "integer"
+      },
+
+      "role": {
+        "uri": "org:role",
+        "range": "org:Role"
+      },
+
+      "ecContribution": {
+        "uri": "schema:amount",
+        "range": "schema:MonetaryAmount",
+        "qualifier": "schema:propertyID = 'ecContribution'",
+        "type": "number"
+      },
+
+      "netEcContribution": {
+        "uri": "schema:amount",
+        "range": "schema:MonetaryAmount",
+        "qualifier": "schema:propertyID = 'netEcContribution'",
+        "type": "number"
+      },
+
+      "totalCost": {
+        "uri": "schema:amount",
+        "range": "schema:MonetaryAmount",
+        "qualifier": "schema:propertyID = 'totalCost'",
+        "type": "number"
+      },
+
+      "endOfParticipation": {
+        "uri": "schema:endDate",
+        "type": "date"
+      },
+
+      "active": {
+        "uri": "adms:status",
+        "range": "skos:Concept",
+        "type": "boolean"
+      }
+    },
+
+    "euroscivoc": {
+
+      "projectID": {
+        "uri": "schema:identifier",
+        "type": "string",
+        "qualifier": "schema:propertyID = 'projectID'"
+      },
+
+      "euroSciVocCode": {
+        "uri": "skos:notation",
+        "type": "string"
+      },
+
+      "euroSciVocPath": {
+        "uri": "skos:broader",
+        "type": "string"
+      },
+
+      "euroSciVocTitle": {
+        "uri": "skos:prefLabel",
+        "type": "string"
+      },
+
+      "euroSciVocDescription": {
+        "uri": "skos:definition",
+        "type": "string"
+      },
+
+      "livello_1": {
+        "uri": "skos:broader",
+        "type": "string"
+      },
+
+      "livello_2": {
+        "uri": "skos:broader",
+        "type": "string"
+      }
+    }
+  }
+}

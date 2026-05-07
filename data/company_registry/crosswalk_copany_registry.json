@@ -1,0 +1,289 @@
+{
+  "@context": {
+    "schema":   "https://schema.org/",
+    "rov":      "http://www.w3.org/ns/regorg#",
+    "org":      "http://www.w3.org/ns/org#",
+    "skos":     "http://www.w3.org/2004/02/skos/core#",
+    "dcterms":  "http://purl.org/dc/terms/",
+    "adms":     "http://www.w3.org/ns/adms#",
+    "cov":      "https://w3id.org/italia/onto/COV/",
+    "clv":      "https://w3id.org/italia/onto/CLV/"
+  },
+
+  "@type": "rov:RegisteredOrganization",
+
+  "_crosswalk": {
+
+    "cf": {
+      "uri": "schema:taxID",
+      "type": "string",
+      "note": "Company tax code (Codice Fiscale)"
+    },
+    "piva": {
+      "uri": "schema:vatID",
+      "type": "string",
+      "note": "VAT identifier"
+    },
+    "rea": {
+      "uri": "cov:REANumber",
+      "type": "string",
+      "note": "Economic and Administrative Index number (REA)"
+    },
+    "reg_imp_n": {
+      "uri": "rov:registration",
+      "type": "string",
+      "note": "Business Register registration number"
+    },
+    "n-albo_art": {
+      "uri": "adms:identifier",
+      "type": "string",
+      "note": "Artisan register identifier"
+    },
+
+    "denominazione": {
+      "uri": "rov:legalName",
+      "type": "string",
+      "note": "Official legal name of the organization"
+    },
+    "tipo_impresa": {
+      "uri": "rov:orgType",
+      "range": "skos:Concept",
+      "note": "Type of enterprise (legal/organizational classification)"
+    },
+    "stato_impresa": {
+      "uri": "rov:orgStatus",
+      "range": "skos:Concept",
+      "note": "Current legal status of the organization"
+    },
+
+    "data_cost": {
+      "uri": "schema:foundingDate",
+      "type": "date",
+      "note": "Company founding date"
+    },
+    "data_isc_ri": {
+      "uri": "dcterms:issued",
+      "type": "date",
+      "note": "Date of registration in the Business Register"
+    },
+    "data_ini_at": {
+      "uri": "schema:foundingDate",
+      "type": "date",
+      "note": "Start date of business activity"
+    },
+    "data_cess_att": {
+      "uri": "schema:dissolutionDate",
+      "type": "date",
+      "note": "Date of business activity cessation"
+    },
+    "data_canc": {
+      "uri": "schema:dissolutionDate",
+      "type": "date",
+      "note": "Company deregistration date"
+    },
+    "data_fine_aa": {
+      "uri": "schema:dissolutionDate",
+      "type": "date",
+      "note": "End of fiscal year or administrative period"
+    },
+    "data_fall": {
+      "uri": "rov:orgStatus",
+      "range": "skos:Concept",
+      "qualifier": "dcterms:date",
+      "type": "date",
+      "note": "Bankruptcy event date (linked to organization status)"
+    },
+    "data_liquid": {
+      "uri": "schema:dissolutionDate",
+      "qualifier_status": "rov:orgStatus",
+      "type": "date",
+      "note": "Liquidation date (associated with organization status)"
+    },
+    "data_apert_ul": {
+      "uri": "dcterms:issued",
+      "domain": "org:Site",
+      "type": "date",
+      "parent": "sede_ul",
+      "note": "Opening date of the local unit (site)"
+    },
+
+    "tel": {
+      "uri": "schema:telephone",
+      "type": "string",
+      "note": "Company phone number"
+    },
+    "PEC": {
+      "uri": "schema:email",
+      "type": "string",
+      "note": "Certified email address (PEC)"
+    },
+
+    "indirizzo": {
+      "uri": "schema:address",
+      "range": "schema:PostalAddress",
+      "note": "Structured postal address container"
+    },
+    "indirizzo_strad": {
+      "uri": "schema:streetAddress",
+      "parent": "indirizzo",
+      "type": "string",
+      "note": "Street name and number"
+    },
+    "indirizzo_cap": {
+      "uri": "schema:postalCode",
+      "parent": "indirizzo",
+      "type": "string",
+      "note": "Postal code (ZIP)"
+    },
+    "comune": {
+      "uri": "schema:addressLocality",
+      "parent": "indirizzo",
+      "type": "string",
+      "note": "Municipality (city)"
+    },
+    "prov": {
+      "uri": "clv:hasProvince",
+      "range": "clv:Province",
+      "parent": "indirizzo",
+      "note": "Province (administrative unit)"
+    },
+    "indirizzo_fraz": {
+      "uri": "schema:description",
+      "parent": "indirizzo",
+      "type": "string",
+      "note": "Sub-municipal locality (frazione)"
+    },
+    "indirizzo_altre": {
+      "uri": "schema:description",
+      "parent": "indirizzo",
+      "type": "string",
+      "note": "Additional address details"
+    },
+
+    "descrizione_attivita": {
+      "uri": "schema:description",
+      "type": "string",
+      "note": "Business activity description"
+    },
+    "ng_esteso": {
+      "uri": "rov:orgActivity",
+      "range": "skos:Concept",
+      "note": "Extended activity classification (ATECO description)"
+    },
+    "ng2": {
+      "uri": "skos:notation",
+      "type": "string",
+      "note": "Activity classification code (ATECO)"
+    },
+
+    "addetti_aaaa": {
+      "uri": "schema:numberOfEmployees",
+      "range": "schema:QuantitativeValue",
+      "qualifier": "schema:propertyID = 'totale'",
+      "type": "integer",
+      "note": "Total number of employees"
+    },
+    "addetti_dip": {
+      "uri": "schema:numberOfEmployees",
+      "range": "schema:QuantitativeValue",
+      "qualifier": "schema:propertyID = 'dipendenti'",
+      "type": "integer",
+      "note": "Number of dependent employees"
+    },
+    "addetti_indip": {
+      "uri": "schema:numberOfEmployees",
+      "range": "schema:QuantitativeValue",
+      "qualifier": "schema:propertyID = 'indipendenti'",
+      "type": "integer",
+      "note": "Number of independent workers"
+    },
+
+    "capitale": {
+      "uri": "schema:funding",
+      "range": "schema:MonetaryAmount",
+      "type": "number",
+      "note": "Company capital amount"
+    },
+    "capitale_valuta": {
+      "uri": "schema:currency",
+      "type": "string",
+      "note": "Currency of the capital amount"
+    },
+
+    "imp_pmi": {
+      "uri": "rov:orgType",
+      "range": "skos:Concept",
+      "type": "boolean",
+      "note": "Indicates if the company is a SME"
+    },
+    "imp_startup": {
+      "uri": "rov:orgType",
+      "range": "skos:Concept",
+      "type": "boolean",
+      "note": "Indicates if the company is a startup"
+    },
+    "imp_femmilile": {
+      "uri": "schema:additionalType",
+      "type": "boolean",
+      "note": "Women-owned business indicator"
+    },
+    "imp_giovanile": {
+      "uri": "schema:additionalType",
+      "type": "boolean",
+      "note": "Youth-owned business indicator"
+    },
+    "imp_straniera": {
+      "uri": "schema:additionalType",
+      "type": "boolean",
+      "note": "Foreign-owned business indicator"
+    },
+    "imp_sedi_ee": {
+      "uri": "schema:additionalProperty",
+      "range": "schema:PropertyValue",
+      "type": "boolean",
+      "note": "Indicates presence of establishments abroad"
+    },
+    "imp_eefvg": {
+      "uri": "schema:areaServed",
+      "type": "string",
+      "note": "Geographical area served (e.g. FVG region)"
+    },
+
+    "sede_ul": {
+      "uri": "org:hasSite",
+      "range": "org:Site",
+      "note": "Local unit (site) of the organization"
+    },
+    "tipo_sedeul_1": {
+      "uri": "org:classification",
+      "parent": "sede_ul",
+      "note": "Site classification level 1"
+    },
+    "tipo_sedeul_2": {
+      "uri": "org:classification",
+      "parent": "sede_ul",
+      "note": "Site classification level 2"
+    },
+    "tipo_sedeul_3": {
+      "uri": "org:classification",
+      "parent": "sede_ul",
+      "note": "Site classification level 3"
+    },
+    "tipo_sedeul_4": {
+      "uri": "org:classification",
+      "parent": "sede_ul",
+      "note": "Site classification level 4"
+    },
+    "tipo_sedeul_5": {
+      "uri": "org:classification",
+      "parent": "sede_ul",
+      "note": "Site classification level 5"
+    },
+    "tipo_localizzazione": {
+      "uri": "org:classification",
+      "range": "skos:Concept",
+      "parent": "sede_ul",
+      "note": "Type of location/site classification"
+    }
+  }
+}

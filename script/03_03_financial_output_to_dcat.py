@@ -8,6 +8,19 @@ import pandas as pd
 
 
 CROSSWALK_FILENAME = "crosswalk_financial.json"
+JSONLD_CONTEXT = {
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "https://schema.org/",
+    "rov": "http://www.w3.org/ns/regorg#",
+    "org": "http://www.w3.org/ns/org#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "cov": "https://w3id.org/italia/onto/COV/",
+    "clv": "https://w3id.org/italia/onto/CLV/",
+    "ifrs": "https://xbrl.ifrs.org/taxonomy/2024-03-27/ifrs-full",
+}
 
 
 # =========================
@@ -119,11 +132,7 @@ def generate_dcat_for_csv(path: Path, provenance: dict, crosswalk: dict):
 
     metadata = {
 
-        "@context": {
-            "dcat": "http://www.w3.org/ns/dcat#",
-            "dcterms": "http://purl.org/dc/terms/",
-            "prov": "http://www.w3.org/ns/prov#"
-        },
+        "@context": JSONLD_CONTEXT,
 
         "@type": "dcat:Dataset",
 
@@ -135,11 +144,13 @@ def generate_dcat_for_csv(path: Path, provenance: dict, crosswalk: dict):
         "dcterms:modified": file_meta['modified'],
 
         "dcat:distribution": {
-            "dcat:accessURL": path.name,
+            "@type": "dcat:Distribution",
+            "dcat:downloadURL": path.name,
             "dcat:mediaType": "text/csv",
-            "bytes": file_meta['size_bytes']
+            "dcat:byteSize": file_meta['size_bytes']
         },
 
+        "prov:generatedAtTime": provenance.get("generated_on"),
         "structure": structure,
 
         "provenance": provenance,
@@ -195,7 +206,7 @@ def main():
         },
         "@type": "dcat:Catalog",
         "dcterms:issued": datetime.now().isoformat(),
-        "datasets": []
+        "dcat:dataset": []
     }
 
     for csv in csv_files:
@@ -216,9 +227,13 @@ def main():
 
         print(f"Wrote: {outpath}")
 
-        catalog['datasets'].append({
-            "title": metadata.get('dcterms:title'),
-            "file": metadata['file_info']['filename'],
+        catalog['dcat:dataset'].append({
+            "dcterms:title": metadata.get('dcterms:title'),
+            "dcat:distribution": {
+                "@type": "dcat:Distribution",
+                "dcat:downloadURL": metadata['file_info']['filename'],
+                "dcat:mediaType": "text/csv",
+            },
             "dcat_json": outpath.name,
             "row_count": metadata['structure'].get('row_count'),
             "column_count": metadata['structure'].get('column_count')
